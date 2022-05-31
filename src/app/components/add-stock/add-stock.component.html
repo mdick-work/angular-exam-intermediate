@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-subtitle>
+        Enter the symbol of a stock to track (i.e. AAPL, TSLA, GOOGL)
+    </mat-card-subtitle>
+    <mat-card-actions>
+        <mat-form-field>
+            <input matInput type="text" maxlength="5" [(ngModel)]="stockSymbol">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="trackStock()">Track Stock</button>
+    </mat-card-actions>
+</mat-card>
