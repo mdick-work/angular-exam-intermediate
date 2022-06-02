@@ -1,1 +1,10 @@
-<p>stocks-display works!</p>
+
+  <mat-card *ngFor="let quoteWithName of quotesWithNames">
+    <mat-card-title>{{ quoteWithName.symbolAndName.name }}  {{quoteWithName.quote.change >= 0 ? '🡹' : '🡻'}}</mat-card-title>
+    <mat-card-content>
+        Change today: {{quoteWithName.quote.percentChange / 100 | percent : '0.2'}}  Opening price: {{ quoteWithName.quote.openPriceOfDay |  currency:'USD'}}  Current price: {{ quoteWithName.quote.currentPrice |  currency:'USD'}}  High price: {{ quoteWithName.quote.highPriceOfDay |  currency:'USD'}}
+    </mat-card-content>
+    <mat-card-actions>
+        <a [routerLink]="'/sentiment/' + quoteWithName.symbolAndName.symbol"><button mat-raised-button color="primary">Go to social sentiment details ></button></a>
+      </mat-card-actions>
+  </mat-card>

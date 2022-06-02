@@ -5,6 +5,7 @@ import { ApiInsiderSentiment } from "../models/api-insider-sentiment";
 import { ApiQuote } from "../models/api-quote";
 import { ApiSymbolLookup } from "../models/api-symbol-lookup";
 import { Quote } from "../models/quote";
+import { SymbolAndName } from "../models/symbolAndName";
 
 @Injectable({
   providedIn: "root",
@@ -33,17 +34,17 @@ export class FinnhubApiService {
     );
   }
 
-  getCompanyNameBySymbol(symbol: string): Observable<string> {
+  getCompanyNameBySymbol(symbol: string): Observable<SymbolAndName> {
     const url = `${this.baseUrl}/search?q=${symbol}&token=${this.apiKey}`;
     return this.http.get<ApiSymbolLookup>(url).pipe(
       map((lookup) => {
-        const results = lookup.results;
+        const results = lookup.result;
         const symbolResult = results.filter((searchResult) => {
           return searchResult.symbol.toUpperCase() == symbol.toUpperCase();
         });
-        return symbolResult[0].description;
+        return new SymbolAndName(symbol, symbolResult[0].description);
       }),
-      catchError(this.handleError<string>("getCompanyNameBySymbol"))
+      catchError(this.handleError<SymbolAndName>("getCompanyNameBySymbol"))
     );
   }
 

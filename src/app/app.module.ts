@@ -13,9 +13,10 @@ import { MatInputModule } from "@angular/material/input";
 import { AddStockComponent } from "./components/add-stock/add-stock.component";
 import { StocksDisplayComponent } from "./components/stocks-display/stocks-display.component";
 import { StockTrackerComponent } from "./components/stock-tracker/stock-tracker.component";
+import { SentimentComponent } from './components/sentiment/sentiment.component';
 
 @NgModule({
-  declarations: [AppComponent, AddStockComponent, StocksDisplayComponent, StockTrackerComponent],
+  declarations: [AppComponent, AddStockComponent, StocksDisplayComponent, StockTrackerComponent, SentimentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
