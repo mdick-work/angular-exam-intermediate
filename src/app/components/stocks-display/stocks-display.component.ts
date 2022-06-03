@@ -44,4 +44,11 @@ export class StocksDisplayComponent implements OnInit {
       this.stockSubscriptions$.push(stockSubscription);
     });
   }
+
+  deleteStock(symbol: string) {
+    this.quotesWithNames = this.quotesWithNames.filter(
+      (e) => e.symbolAndName.symbol.toUpperCase() != symbol
+    );
+    this.localStorageService.deleteSymbol(symbol);
+  }
 }

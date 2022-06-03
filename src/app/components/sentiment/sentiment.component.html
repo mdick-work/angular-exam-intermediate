@@ -1,1 +1,21 @@
-<p>sentiment works!</p>
+<mat-card>
+  <mat-card-title>{{ (symbolName$ | async)?.name }} ({{ symbol }})</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let monthlySentiment of (pastThreeMonthsSentiment$ | async)?.data"
+        >{{ toMonthName(monthlySentiment.month) }}<br />
+        Change:
+        {{ monthlySentiment.change > 0 ? "+" + monthlySentiment.change : monthlySentiment.change }}
+        <div class="arrow-up" *ngIf="monthlySentiment.change >= 0">🡹</div
+        ><div class="arrow-down" *ngIf="monthlySentiment.change < 0">🡻</div><br />
+        MSPR:
+        {{ monthlySentiment.mspr | number: "1.2-2" }}
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <a [routerLink]="''"
+      ><button mat-raised-button color="primary">< Back to list of stocks</button></a
+    >
+  </mat-card-actions>
+</mat-card>

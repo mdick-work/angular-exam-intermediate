@@ -16,6 +16,11 @@ export class AddStockComponent implements OnInit {
   trackStock(): void {
     if (this.stockSymbol) {
       this.localStorageService.addSymbol(this.stockSymbol);
+      this.refresh();
     }
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 }

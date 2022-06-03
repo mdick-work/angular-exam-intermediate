@@ -10,13 +10,20 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import { MatListModule } from "@angular/material/list";
 import { AddStockComponent } from "./components/add-stock/add-stock.component";
 import { StocksDisplayComponent } from "./components/stocks-display/stocks-display.component";
 import { StockTrackerComponent } from "./components/stock-tracker/stock-tracker.component";
 import { SentimentComponent } from './components/sentiment/sentiment.component';
 
 @NgModule({
-  declarations: [AppComponent, AddStockComponent, StocksDisplayComponent, StockTrackerComponent, SentimentComponent],
+  declarations: [
+    AppComponent,
+    AddStockComponent,
+    StocksDisplayComponent,
+    StockTrackerComponent,
+    SentimentComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,6 +34,7 @@ import { SentimentComponent } from './components/sentiment/sentiment.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

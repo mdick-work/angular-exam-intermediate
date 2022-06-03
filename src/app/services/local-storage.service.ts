@@ -23,4 +23,12 @@ export class LocalStorageService {
       localStorage.setItem("symbolsJSON", JSON.stringify([symbol]));
     }
   }
+
+  deleteSymbol(symbol: string) {
+    const symbols = this.getSymbols();
+    if (symbols && symbols.length) {
+      const symbolsWithoutElement = symbols.filter((e) => e.toUpperCase() !== symbol.toUpperCase());
+      localStorage.setItem("symbolsJSON", JSON.stringify(symbolsWithoutElement));
+    }
+  }
 }
